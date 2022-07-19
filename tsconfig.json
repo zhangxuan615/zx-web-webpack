@@ -1,0 +1,38 @@
+/* Visit https://aka.ms/tsconfig.json to read more about this file */
+{
+  "compilerOptions": {
+    /* Core Setting */
+    "module": "esnext", // ts 编译之后的模块导入导出方式 cjs: commonjs esm: es6 / esnext
+    "target": "es6",
+    "jsx": "preserve", // 表示如何处理 jsx 语法：preserve-保持jsx语法(jsx文件) react-转化为React.cxx语法(js)
+    "lib": ["dom", "dom.iterable", "esnext"], // Specify a set of bundled library declaration files that describe the target runtime environment
+
+    /* Type Checking */
+    "strict": true, // 设为 true 则会开启所有类型检查
+
+    /* JavaScript Support */
+    "allowJs": false, // 用来指定是否允许编译 js 文件
+    "checkJs": false, // 用来指定是否检查和报告js文件中的错误，默认是false
+
+    /* Emit */
+    "noEmit": true, // 不生成编译文件
+    "noEmitOnError": true, // 报错情况下不生成编译文件
+    "declaration": false, // 是否生成对应的声明文件
+    "declarationMap": false,
+
+    /* Modules */
+    "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@stores/*": ["./src/stores/*"]
+    },
+
+    /* Interop Constraints */
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */
+  }
+}
