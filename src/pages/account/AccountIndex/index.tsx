@@ -1,6 +1,6 @@
 import React from "react";
 
-const AccountIndex: React.FC = () => {
+const AccountIndex: React.FC = (props) => {
   return <h2>account index</h2>;
 };
 

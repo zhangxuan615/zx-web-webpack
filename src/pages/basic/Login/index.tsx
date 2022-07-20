@@ -4,7 +4,7 @@
 import React from "react";
 
 const Login: React.FC = () => {
-  return <div>login</div>;
+  return <h1>login</h1>;
 };
 
 Login.displayName = "Login";

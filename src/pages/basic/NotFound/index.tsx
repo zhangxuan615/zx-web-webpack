@@ -5,7 +5,7 @@
 import React from "react";
 
 const NotFound: React.FC = () => {
-  return <div>not found 404</div>;
+  return <h1>not found 404</h1>;
 };
 
 NotFound.displayName = "NotFound";
