@@ -3,15 +3,26 @@
  */
 import React from "react";
 import { Outlet } from "react-router-dom";
-import NavMenu from "./NavMenu"; 
+import NavMenu from "./NavMenu";
+
+import styles from "./index.less";
 
 const BasicLayout: React.FC = () => {
   return (
-    <>
-      <h1>basic layout</h1>
-      <NavMenu />
-      <Outlet />
-    </>
+    <div className={styles["global-container"]}>
+      {/* header */}
+      <div className={styles["header-wrapper"]}></div>
+
+      {/* content */}
+      <div className={styles["content-wrapper"]}>
+        <div className={styles["menu-list-wrapper"]}>
+          <NavMenu />
+        </div>
+        <div className={styles["main-wrapper"]}>
+          <Outlet />
+        </div>
+      </div>
+    </div>
   );
 };
 

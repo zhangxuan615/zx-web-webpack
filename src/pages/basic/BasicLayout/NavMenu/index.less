@@ -1,0 +1,62 @@
+.menu-list {
+  padding: 16px;
+
+  .menu-card-wrapper {
+    border-radius: 4px;
+    margin-bottom: 8px;
+    &:hover {
+      background-color: #f5f6fa;
+    }
+
+    .menu-card-header {
+      padding: 8px;
+      display: flex;
+      align-items: center;
+
+      color: #121314;
+      font-size: 24px;
+      font-weight: 500;
+      cursor: pointer;
+
+      .menu-card-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+        background-color: red;
+      }
+
+      .menu-card-show-icon {
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        margin-left: auto;
+      }
+    }
+  }
+
+  .menu-card-content {
+    padding: 0 16px;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 16px;
+    color: #5e6066;
+
+    a.menu-item {
+      width: 50%;
+      padding: 4px 0 8px;
+      cursor: pointer;
+      color: #5e6066;
+      text-decoration: none;
+
+      &:hover {
+        color: #1443ff;
+        font-weight: 500;
+      }
+    }
+
+    a.menu-item-active {
+      color: #1443ff;
+      font-weight: 500;
+    }
+  }
+}

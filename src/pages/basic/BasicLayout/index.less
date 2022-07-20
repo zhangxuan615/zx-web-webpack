@@ -1,0 +1,40 @@
+:global {
+  html,
+  body {
+    margin: 0;
+  }
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.global-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .header-wrapper {
+    width: 100vw;
+    height: 56px;
+    background-color: red;
+    position: fixed;
+  }
+
+  .content-wrapper {
+    padding-top: 56px;
+    flex-grow: 1;
+    display: flex;
+
+    .menu-list-wrapper {
+      width: 240px;
+      max-height: calc(100vh - 80px);
+      position: sticky;
+      top: 56px;
+    }
+
+    .main-wrapper {
+      flex-grow: 1;
+      background-color: yellow;
+    }
+  }
+}
