@@ -55,6 +55,18 @@ const module: webpack.Configuration["module"] = {
         },
       ],
     },
+    // 处理图片资源
+    {
+      test: /\.(png|jpe?g|gif)$/,
+      loader: "url-loader",
+      options: {
+        limit: 5 * 1024, // 5 kb
+        esModule: true,
+        outputPath: "./assets/img",
+        name: "[name]_[contenthash:8].[ext]",
+        publicPath: "/assets/img/",
+      },
+    },
   ],
 };
 

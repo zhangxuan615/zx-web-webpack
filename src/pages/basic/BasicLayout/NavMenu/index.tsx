@@ -1,92 +1,107 @@
 import React, { useMemo, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-
-import menuList, { IMenuInfo } from "@routes/menu.config";
-import joinClassname from "@/utils/join-classname";
+import { Link, useLocation } from "react-router-dom";
+import menuList, { MenuItemType, SubMenuType } from "@routes/menu.config";
+import joinClassNames from "@/utils/join-classname";
+import { svgIcons } from "@/assets/imgs/svg";
 
 import styles from "./index.less";
 
-function MenuCard(props: {
-  icon?: string;
-  title: string;
-  children: React.ReactNode;
-}) {
+function MenuItem(props: MenuItemType) {
+  const { link, title } = props;
+
+  const { pathname } = useLocation();
+  const isActive = pathname === link;
+
+  return (
+    <Link
+      className={joinClassNames(
+        styles["menu-item"],
+        isActive && styles["menu-item-active"]
+      )}
+      to={link}
+    >
+      {title}
+    </Link>
+  );
+}
+function SubMenu(props: SubMenuType) {
+  const { icon, link, title, children: menuItemList } = props;
+  const { pathname } = useLocation();
+
   const [isOpen, setIsOpen] = useState<boolean>(true);
-  const { icon, title, children } = props;
+
+  const isSubMenu = Array.isArray(menuItemList) && menuItemList.length > 0;
+  const menuItemNodes = useMemo(() => {
+    return menuItemList?.map((item) => <MenuItem {...item} />);
+  }, [menuItemList]);
+  const isActive = useMemo(() => {
+    return (
+      menuItemList?.some((item) => item.link === pathname) || link === pathname
+    );
+  }, [pathname]);
 
   const hanldeClick = () => setIsOpen(!isOpen);
 
-  return (
-    <div className={styles["menu-card-wrapper"]}>
-      <div className={styles["menu-card-header"]} onClick={hanldeClick}>
-        <div className={styles["menu-card-icon"]} />
-        <div className={styles["menu-card-title"]}>{title}</div>
-        <div className={styles["menu-card-show-icon"]}></div>
-      </div>
+  if (!isSubMenu) {
+    return (
       <div
-        className={joinClassname(
-          styles["menu-card-content"],
-          !isOpen && styles["menu-card-content-hidden"]
+        className={joinClassNames(
+          styles["sub-menu-wrapper"],
+          isActive && styles["sub-menu-wrapper-active"]
         )}
       >
-        {children}
+        <div onClick={hanldeClick}>
+          <Link className={styles["sub-menu-header"]} to={link!}>
+            {icon && (
+              <div className={styles["sub-menu-icon"]}>{svgIcons[icon]}</div>
+            )}
+            {title}
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={joinClassNames(
+        styles["sub-menu-wrapper"],
+        isActive && styles["sub-menu-wrapper-active"]
+      )}
+    >
+      <div className={styles["sub-menu-header"]} onClick={hanldeClick}>
+        {icon && (
+          <div className={styles["sub-menu-icon"]}>{svgIcons[icon]}</div>
+        )}
+        {isSubMenu ? (
+          <div className={styles["sub-menu-title"]}>{title}</div>
+        ) : (
+          <Link className={styles["sub-menu-title"]} to={link!}>
+            {title}
+          </Link>
+        )}
+        <div className={styles["sub-menu-show-icon"]}>
+          {isOpen ? svgIcons.upArrowIcon : svgIcons.downArrowIcon}
+        </div>
+      </div>
+      <div
+        className={joinClassNames(
+          styles["sub-menu-content"],
+          !isOpen && styles["sub-menu-content-hidden"]
+        )}
+      >
+        {menuItemNodes}
       </div>
     </div>
   );
 }
-function MenuItem(props: { link: string; title: string }) {
-  const { link, title } = props;
-
-  return (
-    <NavLink
-      className={({ isActive }) => {
-        return joinClassname(
-          `${styles["menu-item"]}`,
-          isActive && `${styles["menu-item-active"]}`
-        );
-      }}
-      to={link}
-    >
-      {title}
-    </NavLink>
-  );
-}
-
-function useMenuList(menuList: IMenuInfo[]) {
-  return React.useMemo(() => {
-    return menuList.map((item) => {
-      if (item.link === "/home") {
-        return (
-          <div key={item.key} className={styles["menu-card-wrapper"]}>
-            <div className={styles["menu-card-header"]}>
-              <div className={styles["menu-card-icon"]} />
-              <div className={styles["menu-card-title"]}>{item.title}</div>
-            </div>
-          </div>
-        );
-      }
-
-      if (!item.children) {
-        return (
-          <MenuItem
-            key={item.key}
-            link={item.link as string}
-            title={item.title}
-          />
-        );
-      }
-
-      return (
-        <MenuCard key={item.key} icon={item.icon} title={item.title}>
-          {useMenuList(item.children)}
-        </MenuCard>
-      );
-    });
-  }, [menuList]);
-}
 
 function NavMenu() {
-  const menuNodes = useMenuList(menuList);
+  const menuNodes = React.useMemo(() => {
+    return menuList.map((item) => {
+      return <SubMenu {...item} />;
+    });
+  }, [menuList]);
   return <div className={styles["menu-list"]}>{menuNodes}</div>;
 }
 

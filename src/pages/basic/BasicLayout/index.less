@@ -16,7 +16,6 @@
   .header-wrapper {
     width: 100vw;
     height: 56px;
-    background-color: red;
     position: fixed;
   }
 
@@ -30,11 +29,14 @@
       max-height: calc(100vh - 80px);
       position: sticky;
       top: 56px;
+
+      overflow: auto;
+      overscroll-behavior: contain;
     }
 
     .main-wrapper {
+      margin: 16px;
       flex-grow: 1;
-      background-color: yellow;
     }
   }
 }
