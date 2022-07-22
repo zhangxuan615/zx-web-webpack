@@ -8,9 +8,17 @@ import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { absolutePath, isProduction, isBundleAnalyze, isDev } from "./env";
 
 const originalPlugins: (webpack.WebpackPluginInstance | false)[] = [
+  /**
+   * 提取 html
+   * 1. template: 使用的模板 html 路径
+   * 2. filename: 输出的 html 文件名，类似于 output.filename, 但使用绝对路径/相对路径都是参照 output.path
+   *   例：'./html/[name].[contenthash:8].html' / '/html/[name].[contenthash:8].html'
+   * 3. 决定在生成的 html 引用 js/css 时的 publicPath
+   */
   new HtmlWebpackPlugin({
-    // 提取 html 文件
     template: absolutePath("./src/index.html"),
+    filename: "./html/index.html",
+    publicPath: "/",
     minify: isProduction
       ? {
           removeComments: true,

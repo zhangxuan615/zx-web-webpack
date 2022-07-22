@@ -33,7 +33,7 @@ const devServer: webpackDevServer.Configuration = {
 
     // 作用同 historyApiFallback: true, 用来支持 spa 页面的重刷
     // devServer.app?.use(history({ index: "/index.html" }));
-    middlewares.unshift(history({ index: "/index.html" }));
+    middlewares.unshift(history({ index: "/html/index.html" }));
     return middlewares;
   },
   // 反向代理

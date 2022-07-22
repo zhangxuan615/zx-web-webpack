@@ -7,7 +7,7 @@
   "scripts": {
     "start": " yarn dev",
     "dev": "cross-env NODE_ENV=development webpack serve --config ./build-scripts/webpack.config.babel.ts",
-    "build": "cross-env  NODE_ENV=production webpack --config ./build-scripts/webpack.config.babel.ts",
+    "build": "cross-env NODE_ENV=production webpack --config ./build-scripts/webpack.config.babel.ts",
     "build:ana": "cross-env NODE_ENV=production BUNDLE_ANNALYZE webpack --config ./build-scripts/webpack.config.babel.ts"
   },
   "dependencies": {
