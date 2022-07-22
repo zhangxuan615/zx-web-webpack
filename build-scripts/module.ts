@@ -55,16 +55,36 @@ const module: webpack.Configuration["module"] = {
         },
       ],
     },
-    // 处理图片资源
+    /**
+     * 处理图片资源
+     * outputPath: 相当于 output.path
+     * name: 相当于 filename
+     * publicPath: 相当于 output.publicPath
+     */
     {
       test: /\.(png|jpe?g|gif)$/,
-      loader: "url-loader",
-      options: {
-        limit: 5 * 1024, // 5 kb
-        esModule: true,
-        outputPath: "./assets/img",
-        name: "[name]_[contenthash:8].[ext]",
-        publicPath: "/assets/img/",
+      type: "asset",
+      parser: {
+        dataUrlCondition: {
+          maxSize: 5 * 1024, // 4kb
+        },
+      },
+      generator: {
+        // outputPath: "./assets/img",
+        filename: "assets/imgs/[name]_[contenthash:5][ext]",
+        // publicPath: "/assets/imgs/",
+      },
+    },
+    /**
+     * 处理一般文件资源: 字体 ttf
+     */
+    {
+      test: /\.(ttf)$/,
+      type: "asset/resource",
+      generator: {
+        // outputPath: "./assets/fonts",
+        filename: "assets/fonts/[name]_[contenthash:8][ext]",
+        // publicPath: "/assets/fonts/",
       },
     },
   ],

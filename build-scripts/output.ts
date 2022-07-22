@@ -24,7 +24,7 @@ const output: webpack.Configuration["output"] = {
     ? "js/[name].[contenthash:8].js"
     : "js/[name].bundle.js",
   // url 以双斜杠 // 开头的，表示使用同当前页面相同的协议 https/http
-  publicPath: `//localhost:${PORT}/`, // 相当于全局 publicPath，没有具体设置就使用这里的
+  publicPath: `/`, // 相当于全局 publicPath，没有具体设置就使用这里的
   clean: true, // 代替  CleanWebpackPlugin 插件
 };
 
