@@ -18,6 +18,7 @@ const webpackConfig: webpack.Configuration & {
   module,
   plugins,
   devServer,
+  // devtool: "source-map",
 };
 
 export default webpackConfig;

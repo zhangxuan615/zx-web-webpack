@@ -11,9 +11,9 @@ export default (
     <path
       d="M13 30L25 18L37 30"
       stroke="currentColor"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
