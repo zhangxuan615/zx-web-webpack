@@ -1,5 +1,7 @@
+import React from "react";
 import { RouteObject } from "react-router-dom";
 import { lazyLoadWrapper } from "./LazyLoadWrapper";
+import { NotFound } from "@/pages/basic";
 
 /**
  * 集中式路由配置
@@ -101,10 +103,7 @@ const pageRoutes: RouteObject[] = [
       },
       {
         path: "*",
-        element: lazyLoadWrapper(
-          () =>
-            import(/* webpackChunkName:"not-found" */ "../pages/basic/NotFound")
-        ),
+        element: React.createElement(NotFound),
       },
     ],
   },

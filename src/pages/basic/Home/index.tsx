@@ -3,12 +3,15 @@
  */
 import React from "react";
 
+import styles from "./index.less";
+
 const Home: React.FC = () => {
   const hanleClick = () => {
     // console.log(a);
   };
+  console.log("aaabbb");
   return (
-    <h1 style={{ height: "1000px" }} onClick={hanleClick}>
+    <h1 className={styles["home-container"]} onClick={hanleClick}>
       home
     </h1>
   );

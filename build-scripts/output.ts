@@ -20,12 +20,24 @@ const output: webpack.Configuration["output"] = {
    *   内存中的文件输出位置 与 文件的引用位置一致，都是由 publicPath + filename 决定
    */
   path: isProduction ? absolutePath("./build") : void 0,
+  /**
+   * filename: 决定每个 initial chunk/bundle 名称，会在 html 直接引入的文件
+   *
+   * chunkFilename: 决定每个 non-initial chunk/bundle 名称，异步引入，不会直接在 html 文件中引入
+   *   对应 splitChunks.chunks = "async"
+   */
   filename: isProduction
-    ? "js/[name].[contenthash:8].js"
-    : "js/[name].bundle.js",
+    ? "js/initial.[name].[contenthash:8].js"
+    : "js/initial.[name].bundle.js",
+  chunkFilename: isProduction
+    ? "js/async.[name].[contenthash:8].js"
+    : "js/async.[name].bundle.js",
   // url 以双斜杠 // 开头的，表示使用同当前页面相同的协议 https/http
   publicPath: `/`, // 相当于全局 publicPath，没有具体设置就使用这里的
-  clean: true, // 代替  CleanWebpackPlugin 插件
+  // 代替  CleanWebpackPlugin 插件
+  clean: {
+    keep: /dll\//,
+  },
 };
 
 export default output;
