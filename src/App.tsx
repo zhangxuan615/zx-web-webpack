@@ -7,7 +7,7 @@ import "@/assets/styles/global.less";
  * App 负责处理各种全局配置
  */
 function App() {
-  return <PageRouter></PageRouter>;
+  return <PageRouter />;
 }
 
 export default App;
