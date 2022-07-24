@@ -5,18 +5,18 @@ type RequestMethodType = Extract<Method, "get" | "post">;
 interface RequestParamsType {
   [key: string]: unknown;
 }
-interface ResponseType<T extends {}> {
+interface ResponseType<T extends Record<string, unknown>> {
   st: number;
   data: T | null;
   msg: string;
 }
-type RequestApiType<T extends {}> = (
+type RequestApiType<T extends Record<string, unknown>> = (
   url: string,
   reqParams?: RequestParamsType,
   requestConfig?: AxiosRequestConfig
 ) => Promise<ResponseType<T>>;
 
-function request<T>(type: RequestMethodType): RequestApiType<T> {
+function request<T extends Record<string, unknown>>(type: RequestMethodType): RequestApiType<T> {
   return async (url, reqParams, axiosRequestConfig) => {
     try {
       const res = await reqApiAjax({
@@ -25,7 +25,7 @@ function request<T>(type: RequestMethodType): RequestApiType<T> {
         params: type === "get" ? reqParams : void 0,
         data: type === "post" ? reqParams : void 0,
         // data: void 0,
-        ...axiosRequestConfig,
+        ...axiosRequestConfig
       });
 
       /**

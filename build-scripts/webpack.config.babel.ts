@@ -19,7 +19,7 @@ const webpackConfig: webpack.Configuration & {
   module,
   plugins,
   optimization,
-  devServer,
+  devServer
   // devtool: "source-map",
 };
 

@@ -1,6 +1,6 @@
 import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { absolutePath, isDev } from "./env";
+import { isDev } from "./env";
 
 const module: webpack.Configuration["module"] = {
   rules: [
@@ -25,8 +25,8 @@ const module: webpack.Configuration["module"] = {
       options: {
         presets: [],
         plugins: [isDev && "react-refresh/babel"].filter(Boolean),
-        configFile: "./build-scripts/babel-config.js",
-      },
+        configFile: "./build-scripts/babel-config.js"
+      }
     },
     // 处理样式 less 文件
     {
@@ -39,21 +39,21 @@ const module: webpack.Configuration["module"] = {
           loader: "css-loader",
           options: {
             modules: {
-              auto: (resourcePath: string) =>
-                !resourcePath.includes("node_modules"), // 区别 node_modules 与 自己代码
-              localIdentName: "_[local]__[hash:base64:5]",
-            },
-          },
+              auto: (resourcePath: string) => !resourcePath.includes("node_modules"), // 区别 node_modules 与 自己代码
+              localIdentName: "_[local]__[hash:base64:5]"
+            }
+          }
         },
+        "postcss-loader", // 默认使用 postcss.config.js 配置文件
         {
           loader: "less-loader",
           options: {
             lessOptions: {
-              javascriptEnabled: true,
-            },
-          },
-        },
-      ],
+              javascriptEnabled: true
+            }
+          }
+        }
+      ]
     },
     /**
      * 处理图片资源
@@ -66,14 +66,14 @@ const module: webpack.Configuration["module"] = {
       type: "asset",
       parser: {
         dataUrlCondition: {
-          maxSize: 5 * 1024, // 4kb
-        },
+          maxSize: 5 * 1024 // 4kb
+        }
       },
       generator: {
         // outputPath: "./assets/img",
-        filename: "assets/imgs/[name]_[contenthash:5][ext]",
+        filename: "assets/imgs/[name]_[contenthash:5][ext]"
         // publicPath: "/assets/imgs/",
-      },
+      }
     },
     /**
      * 处理一般文件资源: 字体 ttf
@@ -83,11 +83,11 @@ const module: webpack.Configuration["module"] = {
       type: "asset/resource",
       generator: {
         // outputPath: "./assets/fonts",
-        filename: "assets/fonts/[name]_[contenthash:8][ext]",
+        filename: "assets/fonts/[name]_[contenthash:8][ext]"
         // publicPath: "/assets/fonts/",
-      },
-    },
-  ],
+      }
+    }
+  ]
 };
 
 export default module;
