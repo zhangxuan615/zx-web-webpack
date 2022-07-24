@@ -80,7 +80,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
 
-      "git add"
+      "echo 1"
     ]
   }
 }

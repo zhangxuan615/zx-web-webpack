@@ -12,7 +12,7 @@ const Home: React.FC = () => {
   console.log("aaabbb");
   return (
     <h1 className={styles["home-container"]} onClick={hanleClick}>
-      home1
+      home12
     </h1>
   );
 };
