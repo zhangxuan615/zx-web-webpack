@@ -71,7 +71,7 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.3"
   },
-  "husky_copy": {
+  "husky": {
     "hooks": {
       "commit-msg": "commitlint .commitlintrc.js -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
@@ -79,8 +79,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-
-      "echo 1"
+      "prettier --write",
+      "eslint"
     ]
   }
 }
