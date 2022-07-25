@@ -134,6 +134,20 @@ const pageRoutes: RouteObject[] = [
         ]
       },
       {
+        path: "fluent-ui",
+        children: [
+          {
+            path: "quick-start",
+            element: lazyLoadWrapper(
+              () =>
+                import(
+                  /* webpackChunkName:"fluent-ui-quick-start" */ "../pages/fluent-ui/QuickStart"
+                )
+            )
+          }
+        ]
+      },
+      {
         path: "*",
         element: React.createElement(NotFound)
       }
