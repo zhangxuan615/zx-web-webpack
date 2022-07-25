@@ -74,6 +74,37 @@ const pageRoutes: RouteObject[] = [
         ]
       },
       {
+        path: "style-module",
+        children: [
+          {
+            path: "css-preprocessor",
+            children: [
+              {
+                // index: true,
+                // element: lazyLoadWrapper(
+                //   () =>
+                //     import(/* webpackChunkName:"account-index" */ "../pages/css-module/css-preprocessor/ComWithLess")
+                // )
+              },
+              {
+                path: "user-info",
+                element: lazyLoadWrapper(
+                  () =>
+                    import(/* webpackChunkName:"account-user-info" */ "../pages/account/UserInfo")
+                )
+              },
+              {
+                path: "authority",
+                element: lazyLoadWrapper(
+                  () =>
+                    import(/* webpackChunkName:"account-authority" */ "../pages/account/Authority")
+                )
+              }
+            ]
+          }
+        ]
+      },
+      {
         path: "*",
         element: React.createElement(NotFound)
       }

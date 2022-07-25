@@ -15,7 +15,7 @@ export interface SubMenuType {
 }
 
 /** 交易模块 */
-const tradeMenu: SubMenuType = {
+const tradeMenus: SubMenuType = {
   key: "TRADE",
   icon: "tradeIcon",
   title: "交易",
@@ -38,7 +38,7 @@ const tradeMenu: SubMenuType = {
   ]
 };
 /** 账号管理 */
-const accountMenu: SubMenuType = {
+const accountMenus: SubMenuType = {
   key: "ACCOUNT",
   icon: "accountIcon",
   title: "账号",
@@ -56,6 +56,30 @@ const accountMenu: SubMenuType = {
   ]
 };
 
+/** css 模块化 */
+const cssModuleMenus = {
+  key: "CSS_MODULE",
+  icon: "cssIcon",
+  title: "css 模块化",
+  children: [
+    {
+      key: "CSS_MODULE_CSS_PREPROCESSOR_LESS",
+      link: "/css-module/css-preprocessor/less",
+      title: "less"
+    },
+    {
+      key: "CSS_MODULE_CSS_PREPROCESSOR_SASS",
+      link: "/css-module/css-preprocessor/sass",
+      title: "sass"
+    },
+    {
+      key: "CSS_MODULE_CSS_PREPROCESSOR_STYLUS",
+      link: "/css-module/css-preprocessor/stylus",
+      title: "stylus"
+    }
+  ]
+};
+
 /** 全部菜单 */
 const menuList: SubMenuType[] = [
   {
@@ -64,8 +88,9 @@ const menuList: SubMenuType[] = [
     icon: "homeIcon",
     title: "首页"
   },
-  tradeMenu,
-  accountMenu
+  tradeMenus,
+  accountMenus,
+  cssModuleMenus
 ];
 
 export default menuList;
