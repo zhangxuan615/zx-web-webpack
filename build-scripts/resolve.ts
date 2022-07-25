@@ -6,7 +6,7 @@ const resolve: webpack.Configuration["resolve"] = {
     "@": absolutePath("./src"),
     "@assets": absolutePath("./src/assets"),
     "@routes": absolutePath("./src/routes"),
-    "@pages": absolutePath("./src/pages"),
+    "@pages": absolutePath("./src/pages")
   },
   /**
    * webpack 解析模块逻辑:
@@ -25,7 +25,7 @@ const resolve: webpack.Configuration["resolve"] = {
   extensions: [".ts", ".tsx", ".js", ".jsx", ".json"], // ['.js', '.json'] 优先级从左到右
   mainFiles: ["yyy", "xxx", "index"], // ['index']
   mainFields: ["browser", "module", "main"], // ['browser', 'module', 'main'] 在模块 package.json 查找对应字段
-  modules: ["node_modules"], // ["node_modules"] 解析模块时搜索的目录, 一般不用修改
+  modules: ["node_modules"] // ["node_modules"] 解析模块时搜索的目录, 一般不用修改
 };
 
 export default resolve;

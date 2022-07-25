@@ -13,24 +13,24 @@ const webpackDllConfig: webpack.Configuration = {
     // 最终打包生成的[name] --> jquery
     // ['jquery'] --> 要打包的库是jquery
     react: ["react"],
-    reactDom: ["react-dom"],
+    reactDom: ["react-dom"]
   },
   output: {
     path: absolutePath("./build/dll"),
     filename: "[name].dll.js",
     library: "dll_[name]_[fullhash]", // 打包的库里面向外暴露出去的内容叫什么名字
     clean: {
-      keep: /.+\.manifest\.json$/,
-    },
+      keep: /.+\.manifest\.json$/
+    }
   },
   plugins: [
     // 打包生成一个 manifest.json --> 提供和jquery映射
     new webpack.DllPlugin({
       name: "dll_[name]_[fullhash]", // 映射库的暴露的内容名称
-      path: absolutePath("./build/dll/[name].manifest.json"), // 输出文件路径，绝对路径
-    }),
+      path: absolutePath("./build/dll/[name].manifest.json") // 输出文件路径，绝对路径
+    })
   ],
-  mode: "development",
+  mode: "development"
 };
 
 export default webpackDllConfig;

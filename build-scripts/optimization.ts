@@ -19,22 +19,22 @@ const optimization: webpack.Configuration["optimization"] = {
             parallel: true,
             terserOptions: {
               compress: {
-                drop_console: true, // 移除 console
-              },
-            },
+                drop_console: true // 移除 console
+              }
+            }
           }),
           new CssMinimizerPlugin({
             minimizerOptions: {
               preset: [
                 "default",
                 {
-                  discardComments: { removeAll: true },
-                },
-              ],
-            },
-          }),
+                  discardComments: { removeAll: true }
+                }
+              ]
+            }
+          })
         ]
-      : []),
+      : [])
   ],
   splitChunks: {
     chunks: "async",
@@ -49,13 +49,13 @@ const optimization: webpack.Configuration["optimization"] = {
         test: /node_modules[\\/]react/,
         chunks: "all",
         priority: 100,
-        name: "vender-react",
+        name: "vender-react"
       },
       "vender-modules": {
         test: /node_modules[\\/]/,
         chunks: "all",
         priority: 99,
-        name: "vender-modules",
+        name: "vender-modules"
       },
       /** 优先级强制占用该配置，直接忽略 */
       "vender-components": {
@@ -63,16 +63,16 @@ const optimization: webpack.Configuration["optimization"] = {
         chunks: "all",
         priority: 100,
         enforce: true,
-        name: "vender-components",
+        name: "vender-components"
       },
       /** 该分组基本无影响，直接忽略 */
       default: {
         minChunks: 2,
         priority: -20,
-        reuseExistingChunk: true,
-      },
-    },
-  },
+        reuseExistingChunk: true
+      }
+    }
+  }
 };
 
 export default optimization;

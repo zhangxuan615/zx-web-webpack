@@ -1,5 +1,5 @@
 import webpack from "webpack";
-import { absolutePath, isProduction, PORT } from "./env";
+import { absolutePath, isProduction } from "./env";
 
 const output: webpack.Configuration["output"] = {
   /**
@@ -26,18 +26,14 @@ const output: webpack.Configuration["output"] = {
    * chunkFilename: 决定每个 non-initial chunk/bundle 名称，异步引入，不会直接在 html 文件中引入
    *   对应 splitChunks.chunks = "async"
    */
-  filename: isProduction
-    ? "js/initial.[name].[contenthash:8].js"
-    : "js/initial.[name].bundle.js",
-  chunkFilename: isProduction
-    ? "js/async.[name].[contenthash:8].js"
-    : "js/async.[name].bundle.js",
+  filename: isProduction ? "js/initial.[name].[contenthash:8].js" : "js/initial.[name].bundle.js",
+  chunkFilename: isProduction ? "js/async.[name].[contenthash:8].js" : "js/async.[name].bundle.js",
   // url 以双斜杠 // 开头的，表示使用同当前页面相同的协议 https/http
-  publicPath: `/`, // 相当于全局 publicPath，没有具体设置就使用这里的
+  publicPath: "/", // 相当于全局 publicPath，没有具体设置就使用这里的
   // 代替  CleanWebpackPlugin 插件
   clean: {
-    keep: /dll\//,
-  },
+    keep: /dll\//
+  }
 };
 
 export default output;

@@ -33,9 +33,9 @@ const originalPlugins: (webpack.WebpackPluginInstance | false)[] = [
           removeRedundantAttributes: true,
           removeScriptTypeAttributes: true,
           removeStyleLinkTypeAttributes: true,
-          useShortDoctype: true,
+          useShortDoctype: true
         }
-      : false,
+      : false
   }),
   isProduction &&
     new MiniCssExtractPlugin({
@@ -43,7 +43,7 @@ const originalPlugins: (webpack.WebpackPluginInstance | false)[] = [
        * 单独抽取 css 文件
        * filename: 输出的 css 文件名，类似于 output.filename, 只能使用相对路径
        */
-      filename: "css/[name]_[chunkhash:8].css",
+      filename: "css/[name]_[chunkhash:8].css"
     }),
   isDev && new ReactRefreshWebpackPlugin(),
   /**
@@ -66,13 +66,11 @@ const originalPlugins: (webpack.WebpackPluginInstance | false)[] = [
    */
   new ProgressBarPlugin({
     total: 100,
-    summary: true,
+    summary: true
   }) as unknown as webpack.WebpackPluginInstance,
-  isBundleAnalyze && new BundleAnalyzerPlugin(), // 生产打包启动分析
+  isBundleAnalyze && new BundleAnalyzerPlugin() // 生产打包启动分析
 ];
 
-const filterPlugins = originalPlugins.filter(
-  Boolean
-) as webpack.Configuration["plugins"];
+const filterPlugins = originalPlugins.filter(Boolean) as webpack.Configuration["plugins"];
 
 export default filterPlugins;

@@ -40,9 +40,9 @@ const devServer: webpackDevServer.Configuration = {
   proxy: [
     {
       context: ["/api"],
-      target: "http://localhost:8002",
-    },
-  ],
+      target: "http://localhost:8002"
+    }
+  ]
 };
 
 export default devServer;
