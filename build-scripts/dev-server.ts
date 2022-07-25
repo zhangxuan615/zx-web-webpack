@@ -41,6 +41,9 @@ const devServer: webpackDevServer.Configuration = {
     {
       context: ["/api"],
       target: "http://localhost:8002"
+      // target: {
+      //   port: "8002"
+      // }
     }
   ]
 };
