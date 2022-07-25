@@ -23,19 +23,19 @@ const tradeMenu: SubMenuType = {
     {
       key: "TRADE_ORDER",
       link: "/trade/order",
-      title: "订单",
+      title: "订单"
     },
     {
       key: "TRADE_PRODUCT",
       link: "/trade/product",
-      title: "商品",
+      title: "商品"
     },
     {
       key: "TRADE_SALES",
       link: "/trade/sales",
-      title: "销售",
-    },
-  ],
+      title: "销售"
+    }
+  ]
 };
 /** 账号管理 */
 const accountMenu: SubMenuType = {
@@ -46,14 +46,14 @@ const accountMenu: SubMenuType = {
     {
       key: "ACCOUNT_USER_INFO",
       link: "/account/user-info",
-      title: "用户信息",
+      title: "用户信息"
     },
     {
       key: "ACCOUNT_AUTHORITY",
       link: "/account/authority",
-      title: "权限",
-    },
-  ],
+      title: "权限"
+    }
+  ]
 };
 
 /** 全部菜单 */
@@ -62,10 +62,10 @@ const menuList: SubMenuType[] = [
     key: "HOME",
     link: "/home",
     icon: "homeIcon",
-    title: "首页",
+    title: "首页"
   },
   tradeMenu,
-  accountMenu,
+  accountMenu
 ];
 
 export default menuList;

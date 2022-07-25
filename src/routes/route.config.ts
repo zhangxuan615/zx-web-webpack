@@ -9,24 +9,17 @@ import { NotFound } from "@/pages/basic";
 const pageRoutes: RouteObject[] = [
   {
     path: "/login",
-    element: lazyLoadWrapper(
-      () => import(/* webpackChunkName:"login" */ "../pages/basic/Login")
-    ),
+    element: lazyLoadWrapper(() => import(/* webpackChunkName:"login" */ "../pages/basic/Login"))
   },
   {
     path: "/",
     element: lazyLoadWrapper(
-      () =>
-        import(
-          /* webpackChunkName:"basic-layout" */ "../pages/basic/BasicLayout"
-        )
+      () => import(/* webpackChunkName:"basic-layout" */ "../pages/basic/BasicLayout")
     ),
     children: [
       {
         path: "home",
-        element: lazyLoadWrapper(
-          () => import(/* webpackChunkName:"home" */ "../pages/basic/Home")
-        ),
+        element: lazyLoadWrapper(() => import(/* webpackChunkName:"home" */ "../pages/basic/Home"))
       },
       {
         path: "trade",
@@ -34,40 +27,28 @@ const pageRoutes: RouteObject[] = [
           {
             index: true,
             element: lazyLoadWrapper(
-              () =>
-                import(
-                  /* webpackChunkName:"trade-index" */ "../pages/trade/TradeIndex"
-                )
-            ),
+              () => import(/* webpackChunkName:"trade-index" */ "../pages/trade/TradeIndex")
+            )
           },
           {
             path: "order",
             element: lazyLoadWrapper(
-              () =>
-                import(
-                  /* webpackChunkName:"trade-order" */ "../pages/trade/Order"
-                )
-            ),
+              () => import(/* webpackChunkName:"trade-order" */ "../pages/trade/Order")
+            )
           },
           {
             path: "product",
             element: lazyLoadWrapper(
-              () =>
-                import(
-                  /* webpackChunkName:"trade-product" */ "../pages/trade/Product"
-                )
-            ),
+              () => import(/* webpackChunkName:"trade-product" */ "../pages/trade/Product")
+            )
           },
           {
             path: "sales",
             element: lazyLoadWrapper(
-              () =>
-                import(
-                  /* webpackChunkName:"trade-sales" */ "../pages/trade/Sales"
-                )
-            ),
-          },
-        ],
+              () => import(/* webpackChunkName:"trade-sales" */ "../pages/trade/Sales")
+            )
+          }
+        ]
       },
       {
         path: "account",
@@ -75,38 +56,29 @@ const pageRoutes: RouteObject[] = [
           {
             index: true,
             element: lazyLoadWrapper(
-              () =>
-                import(
-                  /* webpackChunkName:"account-index" */ "../pages/account/AccountIndex"
-                )
-            ),
+              () => import(/* webpackChunkName:"account-index" */ "../pages/account/AccountIndex")
+            )
           },
           {
             path: "user-info",
             element: lazyLoadWrapper(
-              () =>
-                import(
-                  /* webpackChunkName:"account-user-info" */ "../pages/account/UserInfo"
-                )
-            ),
+              () => import(/* webpackChunkName:"account-user-info" */ "../pages/account/UserInfo")
+            )
           },
           {
             path: "authority",
             element: lazyLoadWrapper(
-              () =>
-                import(
-                  /* webpackChunkName:"account-authority" */ "../pages/account/Authority"
-                )
-            ),
-          },
-        ],
+              () => import(/* webpackChunkName:"account-authority" */ "../pages/account/Authority")
+            )
+          }
+        ]
       },
       {
         path: "*",
-        element: React.createElement(NotFound),
-      },
-    ],
-  },
+        element: React.createElement(NotFound)
+      }
+    ]
+  }
 ];
 
 export default pageRoutes;

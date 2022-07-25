@@ -12,7 +12,7 @@ export function retryFetch<T>(
   return new Promise((resolve, reject) => {
     fetchFunc()
       .then(resolve)
-      .catch((err) => {
+      .catch(err => {
         setTimeout(() => {
           if (maxTryCnt <= 0) {
             reject(err);
