@@ -38,7 +38,13 @@ module.exports = {
   ],
   rules: {
     // 'prettier/prettier': 'error', // 一般不建议开启
-    quotes: [2, "double"],
+    quotes: [
+      2,
+      "double",
+      {
+        avoidEscape: true
+      }
+    ],
     "no-console": 0,
     "no-debugger": 1,
     "no-var": 1,

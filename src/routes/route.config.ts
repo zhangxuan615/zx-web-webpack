@@ -107,6 +107,29 @@ const pageRoutes: RouteObject[] = [
                 )
               }
             ]
+          },
+          {
+            path: "css-in-js",
+            children: [
+              {
+                path: "styled-components",
+                element: lazyLoadWrapper(
+                  () =>
+                    import(
+                      /* webpackChunkName:"css-module-styled-components" */ "../pages/css-module/css-in-js/StyledComponents"
+                    )
+                )
+              },
+              {
+                path: "emotion",
+                element: lazyLoadWrapper(
+                  () =>
+                    import(
+                      /* webpackChunkName:"css-module-emotion" */ "../pages/css-module/css-in-js/Emotion"
+                    )
+                )
+              }
+            ]
           }
         ]
       },

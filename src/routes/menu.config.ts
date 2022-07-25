@@ -76,6 +76,16 @@ const cssModuleMenus = {
       key: "STYLE_MODULE_CSS_PREPROCESSOR_STYLUS",
       link: "/style-module/css-preprocessor/stylus",
       title: "stylus"
+    },
+    {
+      key: "STYLE_MODULE_CSS_IN_JS_STYLED_COMPONENTS",
+      link: "/style-module/css-in-js/styled-components",
+      title: "styled-components"
+    },
+    {
+      key: "STYLE_MODULE_CSS_IN_JS_EMOTION",
+      link: "/style-module/css-in-js/emotion",
+      title: "emotion"
     }
   ]
 };

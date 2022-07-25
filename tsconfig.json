@@ -6,6 +6,7 @@
     "target": "es6",
     "jsx": "preserve", // 表示如何处理 jsx 语法：preserve-保持jsx语法(jsx文件) react-转化为React.cxx语法(js)
     "lib": ["dom", "dom.iterable", "esnext"], // Specify a set of bundled library declaration files that describe the target runtime environment
+    "types": ["@emotion/react/types/css-prop"],
 
     /* Type Checking */
     "strict": true, // 设为 true 则会开启所有类型检查
