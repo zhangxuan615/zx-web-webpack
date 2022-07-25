@@ -8,12 +8,12 @@
     "node": "16.x"
   },
   "scripts": {
-    "start": " yarn dev",
+    "start": "yarn dev",
     "dev": "cross-env NODE_ENV=development webpack serve --config ./build-scripts/webpack.config.babel.ts",
     "build": "cross-env NODE_ENV=production webpack --config ./build-scripts/webpack.config.babel.ts",
     "build:ana": "cross-env NODE_ENV=production BUNDLE_ANNALYZE=analysis webpack --config ./build-scripts/webpack.config.babel.ts",
     "build:dll": "webpack --config ./build-scripts/webpack.dll.config.babel.ts",
-    "preinstall": "npx only-allow yarn",
+    "preinstall": "npx -y only-allow yarn",
     "prepare": "husky install"
   },
   "dependencies": {

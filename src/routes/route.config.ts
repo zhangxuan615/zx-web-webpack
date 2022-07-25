@@ -80,24 +80,30 @@ const pageRoutes: RouteObject[] = [
             path: "css-preprocessor",
             children: [
               {
-                // index: true,
-                // element: lazyLoadWrapper(
-                //   () =>
-                //     import(/* webpackChunkName:"account-index" */ "../pages/css-module/css-preprocessor/ComWithLess")
-                // )
-              },
-              {
-                path: "user-info",
+                path: "less",
                 element: lazyLoadWrapper(
                   () =>
-                    import(/* webpackChunkName:"account-user-info" */ "../pages/account/UserInfo")
+                    import(
+                      /* webpackChunkName:"css-module-less" */ "../pages/css-module/css-preprocessor/Less"
+                    )
                 )
               },
               {
-                path: "authority",
+                path: "scss",
                 element: lazyLoadWrapper(
                   () =>
-                    import(/* webpackChunkName:"account-authority" */ "../pages/account/Authority")
+                    import(
+                      /* webpackChunkName:"css-module-scss" */ "../pages/css-module/css-preprocessor/Scss"
+                    )
+                )
+              },
+              {
+                path: "stylus",
+                element: lazyLoadWrapper(
+                  () =>
+                    import(
+                      /* webpackChunkName:"css-module-stylus" */ "../pages/css-module/css-preprocessor/Stylus"
+                    )
                 )
               }
             ]

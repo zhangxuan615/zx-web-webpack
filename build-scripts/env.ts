@@ -21,6 +21,6 @@ const isBundleAnalyze = isProduction && BUNDLE_ANNALYZE === "analysis";
 export const shouldUseSourceMap = true;
 
 // 开发服务器配置
-export const PORT = process.env.port || 8001;
+export const PORT = process.env.port || 5001;
 
 export { NODE_ENV, isDev, isProduction, isBundleAnalyze, absolutePath };

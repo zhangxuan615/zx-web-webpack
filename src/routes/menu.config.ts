@@ -58,23 +58,23 @@ const accountMenus: SubMenuType = {
 
 /** css 模块化 */
 const cssModuleMenus = {
-  key: "CSS_MODULE",
-  icon: "cssIcon",
-  title: "css 模块化",
+  key: "STYLE_MODULE",
+  icon: "styleIcon",
+  title: "style 模块化",
   children: [
     {
-      key: "CSS_MODULE_CSS_PREPROCESSOR_LESS",
-      link: "/css-module/css-preprocessor/less",
+      key: "STYLE_MODULE_CSS_PREPROCESSOR_LESS",
+      link: "/style-module/css-preprocessor/less",
       title: "less"
     },
     {
-      key: "CSS_MODULE_CSS_PREPROCESSOR_SASS",
-      link: "/css-module/css-preprocessor/sass",
-      title: "sass"
+      key: "STYLE_MODULE_CSS_PREPROCESSOR_SCSS",
+      link: "/style-module/css-preprocessor/scss",
+      title: "scss"
     },
     {
-      key: "CSS_MODULE_CSS_PREPROCESSOR_STYLUS",
-      link: "/css-module/css-preprocessor/stylus",
+      key: "STYLE_MODULE_CSS_PREPROCESSOR_STYLUS",
+      link: "/style-module/css-preprocessor/stylus",
       title: "stylus"
     }
   ]

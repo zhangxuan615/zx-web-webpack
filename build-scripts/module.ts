@@ -2,6 +2,21 @@ import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { isDev } from "./env";
 
+// 复用样式处理 loader
+const commonCssLoader = [
+  isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+  {
+    loader: "css-loader",
+    options: {
+      modules: {
+        auto: (resourcePath: string) => !resourcePath.includes("node_modules"), // 区别 node_modules 与 自己代码
+        localIdentName: "_[local]__[hash:base64:5]"
+      }
+    }
+  },
+  "postcss-loader" // 默认使用 postcss.config.js 配置文件
+];
+
 const module: webpack.Configuration["module"] = {
   rules: [
     /**
@@ -28,23 +43,16 @@ const module: webpack.Configuration["module"] = {
         configFile: "./build-scripts/babel-config.js"
       }
     },
-    // 处理样式 less 文件
+    /**
+     * 处理 less 样式资源
+     * 处理 scss 样式资源
+     * 处理 stylus 样式资源
+     */
     {
-      // 处理less资源
       test: /\.less$/,
-      // exclude: /node_modules/,  // 不需要在这里排除 node_modules 中的 less 样式
+      // exclude: /node_modules/,
       use: [
-        isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-        {
-          loader: "css-loader",
-          options: {
-            modules: {
-              auto: (resourcePath: string) => !resourcePath.includes("node_modules"), // 区别 node_modules 与 自己代码
-              localIdentName: "_[local]__[hash:base64:5]"
-            }
-          }
-        },
-        "postcss-loader", // 默认使用 postcss.config.js 配置文件
+        ...commonCssLoader,
         {
           loader: "less-loader",
           options: {
@@ -52,6 +60,26 @@ const module: webpack.Configuration["module"] = {
               javascriptEnabled: true
             }
           }
+        }
+      ]
+    },
+    {
+      test: /\.scss$/,
+      // exclude: /node_modules/,
+      use: [
+        ...commonCssLoader,
+        {
+          loader: "sass-loader"
+        }
+      ]
+    },
+    {
+      test: /\.styl$/,
+      // exclude: /node_modules/,
+      use: [
+        ...commonCssLoader,
+        {
+          loader: "stylus-loader"
         }
       ]
     },
