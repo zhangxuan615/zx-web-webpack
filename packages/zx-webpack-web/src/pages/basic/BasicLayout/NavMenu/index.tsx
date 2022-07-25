@@ -72,7 +72,7 @@ function SubMenu(props: SubMenuType) {
           </Link>
         )}
         <div className={styles["sub-menu-show-icon"]}>
-          1{isOpen ? svgIcons.upArrowIcon : svgIcons.downArrowIcon}
+          {isOpen ? svgIcons.upArrowIcon : svgIcons.downArrowIcon}
         </div>
       </div>
       <div
